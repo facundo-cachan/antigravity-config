@@ -1,0 +1,49 @@
+# ARCHIVO: /antigravity/skills/autodoc/config.yaml
+# Propósito: Configuración operativa y permisos para la Skill Architect & Documentation
+
+skill_identity:
+  id: "autodoc-architect-pro"
+  namespace: "documentation"
+  priority: 1 # Prioridad alta para ejecutarse inmediatamente después de cambios en código
+
+operational_settings:
+  # Define en qué archivos tiene permiso de escritura la Skill
+  allowed_write_paths:
+    - "src/**/*.ts"
+    - "src/**/*.tsx"
+    - "docs/SRS.md"
+    - "README.md"
+  
+  # Extensiones de archivo que debe monitorear para análisis
+  watch_extensions:
+    - ".ts"
+    - ".tsx"
+    - ".js"
+    - ".jsx"
+
+automation_rules:
+  # Criterio 1 & 2: Documentación y Ejemplos
+  generate_jsdoc: true
+  require_implementation_example: true
+  example_language: "typescript"
+  
+  # Criterio 3: Sincronización de SRS/README
+  sync_on_refactor: true
+  enforce_anchor_tags: true # Obliga a usar para no romper archivos
+  update_changelog: true    # Mantiene el historial de refactorización en el SRS
+
+document_templates:
+  # Referencia a la guía de estilos creada anteriormente
+  style_guide_reference: "./STYLE_GUIDE.md"
+  date_format: "YYYY-MM-DD"
+
+error_handling:
+  # Si el agente no encuentra las anclas en el SRS, debe crear un reporte
+  on_missing_anchors: "warn_and_create"
+  # Evita que la IA borre secciones completas por error
+  min_file_retention_score: 0.8 
+
+# Configuración del modelo de lenguaje para esta Skill específica
+model_parameters:
+  temperature: 0.2 # Temperatura baja para mayor precisión técnica y menos "alucinaciones"
+  max_tokens: 2000

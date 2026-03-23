@@ -1,0 +1,7 @@
+skill_identity:
+  id: "secret-guard"
+
+automation_rules:
+  - "Bloquear commit si se detecta un patrón de API Key en src/"
+  - "Verificar que el archivo .gitignore incluya '.env'"
+  - "Validar que cada nueva variable en el código esté reflejada en .env.example"

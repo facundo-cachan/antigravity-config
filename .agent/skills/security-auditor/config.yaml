@@ -1,0 +1,24 @@
+skill_identity:
+  id: "security-snyk-auditor"
+
+integration:
+  tool: "Snyk"
+  api_check: true
+  fail_on: "high_severity" # La skill detendrá el proceso si encuentra vulnerabilidades críticas
+
+operational_settings:
+  commands:
+    scan_deps: "snyk test"
+    scan_code: "snyk code test"
+  autofix_enabled: true # Permite a la skill aplicar 'snyk fix' automáticamente
+
+plugin_config:
+  snyk_token: "${SNYK_TOKEN}" # Variable de entorno
+  organization_id: "my-tech-startup"
+  scan_types:
+    - "sast" # Static Analysis
+    - "sca"  # Software Composition (dependencies)
+
+rules:
+  - "No permitir merges si hay vulnerabilidades 'Medium' o superior"
+  - "Sugerir versión de parche automáticamente en package.json"

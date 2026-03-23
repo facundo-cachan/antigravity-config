@@ -1,0 +1,11 @@
+{
+  "id": "refactor-master",
+  "scope": [
+    "src/utils",
+    "src/components"
+  ],
+  "rules": {
+    "preserve_signatures": true,
+    "max_complexity_threshold": 10
+  }
+}

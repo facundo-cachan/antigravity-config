@@ -1,0 +1,12 @@
+skill_identity:
+  id: "bug-fixer-auto"
+
+operational_settings:
+  allowed_write_paths: ["src/**/*"]
+  # Esta skill tiene permitido ejecutar comandos de consola para probar el fix
+  allow_command_execution: true 
+  test_command: "pnpm test"
+
+automation_rules:
+  verify_before_commit: true
+  require_root_cause_analysis: true

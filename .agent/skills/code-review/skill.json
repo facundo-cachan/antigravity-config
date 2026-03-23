@@ -1,0 +1,9 @@
+{
+  "id": "code-reviewer",
+  "name": "Code Quality Auditor",
+  "description": "Analiza patrones de diseño, seguridad y eficiencia.",
+  "capabilities": [
+    "static-analysis",
+    "commenting"
+  ]
+}

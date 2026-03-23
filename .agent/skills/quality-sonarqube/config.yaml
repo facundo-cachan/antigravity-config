@@ -1,0 +1,14 @@
+skill_identity:
+  id: "quality-sonarqube-manager"
+
+integration:
+  tool: "SonarScanner"
+  server_url: "${SONAR_HOST_URL}"
+  
+quality_gate:
+  max_debt_minutes: 30
+  require_test_coverage: 80 # No permite avanzar si el código nuevo baja el promedio
+  check_duplication: true
+
+automation_rules:
+  on_quality_gate_fail: "trigger_refactoring_skill" # Si falla Sonar, activa la skill de refactorización

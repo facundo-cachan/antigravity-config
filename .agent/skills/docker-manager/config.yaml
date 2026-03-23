@@ -1,0 +1,7 @@
+skill_identity:
+  id: "docker-architect"
+
+rules:
+  - "Utilizar imágenes 'alpine' o 'slim' para reducir superficie de ataque."
+  - "Multi-stage builds obligatorios para separar dependencias de desarrollo."
+  - "Escaneo de imágenes con Snyk Container antes de cada build."
