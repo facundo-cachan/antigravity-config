@@ -1,7 +1,7 @@
 ---
 name: testing
 description: Testing strategies and patterns for Unit (Jest) and E2E (Maestro) tests.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"
@@ -10,7 +10,10 @@ metadata:
 allowed-tools: Read, Edit, Write, Bash, Task
 ---
 
-# Testing Skill
+# Purpose
+
+---
+Testing Skill
 
 **ROLE:**
 

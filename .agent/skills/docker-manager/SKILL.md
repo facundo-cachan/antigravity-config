@@ -1,7 +1,7 @@
 ---
 name: docker-manager
 description: Gestiona la configuración de Docker, optimización de imágenes y seguridad de contenedores.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

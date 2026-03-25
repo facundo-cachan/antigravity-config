@@ -3,7 +3,7 @@ name: typescript
 description: >
   TypeScript strict patterns and best practices.
   Trigger: When implementing or refactoring TypeScript in .ts/.tsx (types, interfaces, generics, const maps, type guards, removing any, tightening unknown).
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"
@@ -12,7 +12,9 @@ metadata:
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ---
 
-# Const Types Pattern (REQUIRED)
+# Purpose
+
+## Const Pattern (REQUIRED)
 
 ```typescript
 // ✅ ALWAYS: Create const object first, then extract type

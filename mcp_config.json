@@ -1,0 +1,85 @@
+{
+  "mcpServers": {
+    "BrowserMCP": {
+      "args": [
+        "-y",
+        "@browsermcp/mcp@latest"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "GitLab": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gitlab"
+      ],
+      "command": "npx",
+      "env": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "${GITLAB_PERSONAL_ACCESS_TOKEN}",
+        "GITLAB_URL": "https://gitlab.com"
+      },
+      "disabled": false
+    },
+    "GitHub": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
+    },
+    "NotebookLM": {
+      "args": [
+        "-y",
+        "notebooklm-mcp-server"
+      ],
+      "command": "npx",
+      "env": {
+        "NOTEBOOKLM_CREDENTIALS_PATH": "~/.notebooklm-mcp/auth.json"
+      },
+      "disabled": true
+    },
+    "Playwright": {
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "command": "npx"
+    },
+    "Sequential-thinking": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabledTools": [],
+      "env": {}
+    },
+    "Snyk": {
+      "args": [
+        "mcp",
+        "-t",
+        "stdio"
+      ],
+      "command": "/Users/facundocachan/Library/Application Support/snyk/vscode-cli/snyk-macos-arm64",
+      "env": {
+        "IDE_CONFIG_PATH": "Antigravity",
+        "SNYK_API": "https://api.snyk.io",
+        "SNYK_CFG_ORG": "9f0c8cea-b21c-4dba-ba9a-046cbd7a5c41",
+        "TRUSTED_FOLDERS": "~/Projects/intranet;~/Projects;~/.ssh;~/Documents;~/Projects/Globy_Solutions/Clients/ANSV/portal-intranet;~/Projects/Globy_Solutions/Projects/nestjs_ldap;~/Projects/Globy_Solutions/Clients/ANSV/KeyLab;~/Downloads/dashboi/dashboi;~/Projects/Globy_Solutions/Clients/ANSV/sigesta;~/Projects/Globy_Solutions/Projects/CRMC;~/Projects/Globy_Solutions/Projects/CRMG;~/Projects/nextjs-builder-starter;~/Projects/TeamCubation;~/Projects/Globy_Solutions/Clients/ANSV/suite_mobile;~/Projects/Globy_Solutions/Clients/ANSV/suite_mobile_rust;~/Projects/my-handler;~/Projects/Globy_Solutions/Clients/ANSV/suite_mobile_;~/Projects/Practices/RepackApp;~/Projects/Practices/profile;~/Projects/Globy_Solutions/Projects/react-native-system-components;~/Projects/Globy_Solutions/Projects/React_Native/ansv_rn-components;~/Projects/Globy_Solutions/Projects;~/Projects/Globy_Solutions/Clients/ANSV/ansv_rn-components;~/Projects/Globy_Solutions/Clients/ANSV/ansv_suite_mobile;~/Projects/Globy_Solutions/Clients/ANSV/my-app;~/Projects/Globy_Solutions/Clients/ANSV/ansv_react-components;~/Projects/nestjs_graphql;~/Projects/graphql;~/Projects/Practices/nestjs_graphql;~/Projects/Globy_Solutions/Clients/ANSV;~/Projects/Globy_Solutions/Clients/ansv_suite_mobile;~/Projects/setrex-saas-template.webflow.io;~/.config;~/Projects/websites/setrex-saas-template.webflow.io;~/.gemini/antigravity/scratch/ai-software-factory;~/.antigravity;~/Projects/modules/projects;~/.ssh;~/Downloads/nextjs16-components;~/Projects/setrex/setrex-saas-template.webflow.io;~/Documents/ANSV"
+      }
+    },
+    "StitchMCP": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://stitch.googleapis.com/mcp",
+        "--header",
+        "X-Goog-Api-Key: AQ.Ab8RN6KVfu7EP86mEM_cLGema7GsCuU8TCvihfbI06hk76A4Eg"
+      ],
+      "env": {}
+    }
+  }
+}

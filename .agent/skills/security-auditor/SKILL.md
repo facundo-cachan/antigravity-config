@@ -3,7 +3,7 @@ name: security-auditor
 description: Auditoría de seguridad de dependencias y código estático (SAST) utilizando Snyk.
 ---
 
-# Security Auditor Skill
+# Purpose
 
 Actúa como un auditor de seguridad integrando Snyk en el flujo de desarrollo.
 

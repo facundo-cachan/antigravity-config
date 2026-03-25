@@ -1,7 +1,7 @@
 ---
 name: best-practices
 description: Reviews code changes for bugs, style issues, and best practices. Use when reviewing PRs or checking code quality.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

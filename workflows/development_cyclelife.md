@@ -1,7 +1,7 @@
 ---
 title: Ciclo Completo de Desarrollo Autónomo
 description: Ejecuta el proceso desde el análisis de SRS hasta el reporte de cierre.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

@@ -3,7 +3,7 @@ name: recoil
 description: >
   Recoil state management patterns (v0.7.7).
   Trigger: When implementing client-side state with Recoil (atoms, selectors, atom effects, useRecoilState).
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

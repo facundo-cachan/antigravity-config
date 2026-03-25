@@ -3,7 +3,7 @@ name: shared-logic
 description: Shared logic for the project.
 ---
 
-# Shared Logic Skill
+# Purpose
 
 ---
 **ROLE:**

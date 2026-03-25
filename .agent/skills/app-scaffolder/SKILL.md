@@ -1,7 +1,7 @@
 ---
 name: app-scaffolder
 description: Generates the initial file architecture based on the SRS technology stack.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

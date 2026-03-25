@@ -1,7 +1,7 @@
 ---
 name: bug-fixing
 description: Fixes bugs and errors in the codebase.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

@@ -3,7 +3,7 @@ name: nextjs-16
 description: >
   Next.js 16 App Router patterns.
   Trigger: When working in Next.js App Router (app/), Server Components vs Client Components, Server Actions, Route Handlers, caching/revalidation, and streaming/Suspense.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

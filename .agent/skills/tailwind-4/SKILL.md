@@ -3,7 +3,7 @@ name: tailwind-4
 description: >
   Tailwind CSS 4 patterns and best practices.
   Trigger: When styling with Tailwind (className, variants, cn()), especially when dynamic styling or CSS variables are involved (no var() in className).
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"
@@ -12,7 +12,7 @@ metadata:
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ---
 
-# Styling Decision Tree
+# Purpose
 
 ```mermaid
 graph LR

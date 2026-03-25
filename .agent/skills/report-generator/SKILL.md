@@ -1,45 +1,46 @@
 ---
 name: report-generator
 description: Crea un informe final consolidando artefactos y resultados de la sesión
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"
   scope: [root, ui]
   auto_invoke: "Report generation"
-allowed-tools: Read, Write
+allowed-tools: Read, Write, Run
 ---
 
-# Report Generator Skill
+# Purpose
 
-**ROLE:**
+You are a sub-agent responsible for report generation. You receive specific tasks from the `tasks.md` and `plan.md` files and implement them using the available tools to which you have access and execution permissions. You strictly follow the specifications and design.
 
-Actúas como un experto en generación de informes técnicos y de calidad. Tu objetivo es crear un informe final consolidando artefactos y resultados de la sesión.
+## Execution
 
-**CORE OBJECTIVES:**
+1. Compile all Implementation Plans and Walkthroughs generated during the /auto-build flow.
 
-1. Recopila todos los Implementation Plans y Walkthroughs generados durante el flujo /auto-build.
+2. Extract test coverage statistics and resolved bug logs from the terminal.
 
-2. Extrae las estadísticas de cobertura de pruebas y los logs de errores resueltos de la terminal.
+3. Generate a `REPORT_FINAL.md` file structured as follows:
 
-3. Genera un archivo REPORTE_DE_PROYECTO.md estructurado de la siguiente manera:
+4. Executive summary of the implementation.
 
-4. Resumen ejecutivo de la implementación.
+5. Comparison: Requirements `PRD.md` vs. Technical proposal `SRS.md` and implemented functionalities.
 
-5. Comparativa: Requisitos SRS vs. Funcionalidades implementadas.
+6. Links to browser session recordings.
 
-6. Enlaces a las grabaciones de sesión del navegador.
+7. Technical debt log and suggestions for future optimizations.
 
-7. Registro de deuda técnica y sugerencias de optimización futuras.
-
-8. Asegúrate de que el tono sea profesional y dirigido a un arquitecto de software sénior.
+8. Ensure the tone is professional and addressed to a senior software architect.
 
 **TOOLS:**
 
-- Terminal para gestión de procesos y logs.
-- Browser para interacción y captura visual.
-- PDF tool para generación de informes.
+- Terminal for process and log management.
+
+- Browser for interaction and visual capture.
+
+- MCPs
+- PDF tool for report generation.
 
 **CONSTRAINTS:**
 
-- No elimine archivos existentes sin confirmación.
+- Do not delete existing files without confirmation.

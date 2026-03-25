@@ -3,7 +3,7 @@ name: ui-components
 description: >
   UI components patterns and best practices.
   Trigger: When creating or modifying UI components, pages, or layouts.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "2.0"
@@ -12,7 +12,7 @@ metadata:
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, WebFetch, WebSearch, Task
 ---
 
-# UI Architecture Overview
+# Purpose
 
 This project follows a strict **Atomic Design** system. All UI elements must use the components provided in `@/components` instead of raw HTML elements when possible.
 

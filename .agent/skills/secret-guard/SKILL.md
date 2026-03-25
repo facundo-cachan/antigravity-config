@@ -3,7 +3,7 @@ name: secret-guard
 description: Previene la exposición de secretos, claves de API y asegura la gestión de variables de entorno.
 ---
 
-# Secret Guard Skill
+# Purpose
 
 Protege el repositorio contra la fuga de información sensible.
 

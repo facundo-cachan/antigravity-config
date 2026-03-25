@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: Reviews code for quality, performance, and security issues.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"

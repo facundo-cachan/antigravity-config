@@ -1,7 +1,7 @@
 ---
 name: e2e-validator
 description: Realiza pruebas de integración y validación visual en el navegador.
-license: Apache-2.0
+license: MIT
 metadata:
   author: Facundo Cachan
   version: "1.0"
