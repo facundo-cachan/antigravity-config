@@ -175,3 +175,25 @@ Example: `"user:fa:solid:lg"` or `"home:bx"`.
 - [ ] Is `darkMode` supported via `dark:` classes?
 - [ ] Are lists rendered using `map` with unique `key`s?
 - [ ] Are complex states managed outside the visual layer (e.g. in Hooks)?
+
+## Good Practices & Considerations
+
+### Component Syntax
+
+If the component is of type:
+
+```tsx
+const ComponentName = () => {
+  return (<ComponentType />)
+};
+```
+
+It must be:
+
+```tsx
+const ComponentName = (): JSX.Element => (<ComponentType />);
+```
+
+### Component Props
+
+The text must always be wrapped by the `<Text />` component, never if it is.
