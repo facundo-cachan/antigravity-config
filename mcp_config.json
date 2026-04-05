@@ -80,6 +80,13 @@
         "X-Goog-Api-Key: AQ.Ab8RN6KVfu7EP86mEM_cLGema7GsCuU8TCvihfbI06hk76A4Eg"
       ],
       "env": {}
+    },
+    "Context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
     }
   }
 }
