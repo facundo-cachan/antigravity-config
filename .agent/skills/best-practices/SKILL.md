@@ -20,6 +20,8 @@ When reviewing code, follow these steps:
 2. **Edge cases**: Are error conditions handled?
 3. **Style**: Does it follow project conventions?
 4. **Performance**: Are there obvious inefficiencies?
+5. **no-use-effect**: The only place useEffect may appear directly is inside reusable custom hooks (like useMountEffect itself, or a useData hook when no fetching library is available). Components must never import or call useEffect.
+6. **Security**: Are there obvious security vulnerabilities?
 
 ## How to provide feedback
 
