@@ -1,0 +1,21 @@
+{
+  "name": "Agentic Universal Stack",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "antigravity.antigravity-extension",
+        "trufflesecurity.trufflehog"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "installZsh": true
+    }
+  },
+  "postCreateCommand": "bash .antigravity/scripts/setup-env.sh",
+  "remoteUser": "node"
+}

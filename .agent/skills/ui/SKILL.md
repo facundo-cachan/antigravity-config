@@ -52,7 +52,7 @@ The universal container. Replaces `div`, `section`, `main`, etc.
 
 ```tsx
 <View type="section" className="flex flex-col gap-4 p-4">
-  <View type="article" className="bg-n0 dark:bg-n800 rounded-lg shadow">
+  <View type="article" className="rounded-lg shadow">
     {/* content */}
   </View>
 </View>
@@ -63,10 +63,10 @@ The universal container. Replaces `div`, `section`, `main`, etc.
 The universal text renderer. Replaces `h1`-`h6`, `p`, `span`, `label`.
 
 ```tsx
-<Text type="h1" className="text-2xl font-bold text-n900 dark:text-n0">
+<Text type="h1" className="text-2xl font-bold">
   Page Title
 </Text>
-<Text type="p" className="text-sm text-n500">
+<Text type="p" className="text-sm">
   Description text...
 </Text>
 ```
@@ -164,14 +164,14 @@ Icons strings follow the format: `name:source:style:size` or `name`.
 
 - **Sources**: `fa` (FontAwesome), `bx` (Boxicons).
 - **Styles**: `solid`, `regular`, `brands`.
-- **Sizes**: `xs`, `sm`, `md`, `lg`, `xl`.
+- **Sizes**: `1x`, `2x`, `3x` to `10x` (biggest).
 
 Example: `"user:fa:solid:lg"` or `"home:bx"`.
 
 ## Best Practices Checklist
 
 - [ ] Am I using `View` and `Text` instead of `div`/`span`?
-- [ ] Are colors using the semantic theme (`primary`, `n100`-`n900`)?
+- [ ] Are colors using the semantic theme (`primary`, `black`, `-`n900`)?
 - [ ] Is `darkMode` supported via `dark:` classes?
 - [ ] Are lists rendered using `map` with unique `key`s?
 - [ ] Are complex states managed outside the visual layer (e.g. in Hooks)?
@@ -197,3 +197,8 @@ const ComponentName = (): JSX.Element => (<ComponentType />);
 ### Component Props
 
 The text must always be wrapped by the `<Text />` component, never if it is.
+
+### Effects
+
+For web apps, use `./gsap/SKILL`
+For mobile apps, use [Reanimated](https://docs.swmansion.com/react-native-reanimated/)

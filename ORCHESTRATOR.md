@@ -40,7 +40,7 @@ Antes de cualquier acción (Escritura de código, Refactorización o Diseño):
 ### Delegation Rules (ALWAYS ACTIVE)
 
 | Rule | Instruction |
-|------|-------------|
+| ------ | ------------- |
 | No inline work | Reading/writing code, analysis, tests → delegate to sub-agent |
 | Prefer tasks | Use `task` for sub-agent work; Codex does not expose async `delegate` tooling |
 | Allowed actions | Short answers, coordinate phases, show summaries, ask decisions, track state |
@@ -50,6 +50,7 @@ Antes de cualquier acción (Escritura de código, Refactorización o Diseño):
 ### Hard Stop Rule (ZERO EXCEPTIONS)
 
 Before using Read, Edit, Write, or Grep tools on source/config/skill files:
+
 1. **STOP** — ask yourself: "Is this orchestration or execution?"
 2. If execution → **delegate to sub-agent. NO size-based exceptions.**
 3. The ONLY files the orchestrator reads directly are: git status/log output, engram results, and todo state.
@@ -66,7 +67,7 @@ Before using Read, Edit, Write, or Grep tools on source/config/skill files:
 ### Task Escalation
 
 | Size | Action |
-|------|--------|
+| ------ | -------- |
 | Simple question | Answer if known, else delegate |
 | Small task | delegate to sub-agent |
 | Substantial feature | Suggest SDD: `/sdd-new {name}`, then delegate phases |
@@ -80,13 +81,14 @@ SDD is the structured planning layer for substantial changes.
 ### Artifact Store Policy
 
 | Mode | Behavior |
-|------|----------|
+| ------ | ---------- |
 | `engram` | Default when available. Persistent memory across sessions. |
 | `openspec` | File-based artifacts. Use only when user explicitly requests. |
 | `hybrid` | Both backends. Cross-session recovery + local files. More tokens per op. |
 | `none` | Return results inline only. Recommend enabling engram or openspec. |
 
 ### Commands
+
 - `/sdd-init` -> run `sdd-init`
 - `/sdd-explore <topic>` -> run `sdd-explore`
 - `/sdd-new <change>` -> run `sdd-explore` then `sdd-propose`
@@ -98,7 +100,8 @@ SDD is the structured planning layer for substantial changes.
 - `/sdd-new`, `/sdd-continue`, and `/sdd-ff` are meta-commands handled by YOU (the orchestrator). Do NOT invoke them as skills.
 
 ### Dependency Graph
-```
+
+```mermaid
 proposal -> specs --> tasks -> apply -> verify -> archive
              ^
              |
@@ -106,16 +109,25 @@ proposal -> specs --> tasks -> apply -> verify -> archive
 ```
 
 ### Result Contract
+
 Each phase returns: `status`, `executive_summary`, `artifacts`, `next_recommended`, `risks`.
 
 ### Sub-Agent Launch Pattern
-ALL sub-agent launch prompts MUST include pre-resolved skill references:
-```
+
+ALL sub-agent launch prompts MUST include:
+
+1. **MODEL_TAG**: [Flash | Pro | Sonnet] - Chosen by the Orchestrator based on complexity.
+2. **SKILL**: Load `{skill-path}` before starting.
+3. **CONTEXT**: Relevant engram/spec references.
+
+```markdown
   SKILL: Load `{skill-path}` before starting.
 ```
+
 The ORCHESTRATOR resolves skill paths from the registry ONCE (at session start or first delegation), then passes the exact path to each sub-agent. Sub-agents do NOT search for the skill registry themselves.
 
 **Orchestrator skill resolution (do once per session):**
+
 1. `mem_search(query: "skill-registry", project: "{project}")` → get registry
 2. Cache the skill-name → path mapping for the session
 3. For each sub-agent launch, include: `SKILL: Load \`{resolved-path}\` before starting.`
@@ -137,7 +149,7 @@ Sub-agents get a fresh context with NO memory. The orchestrator controls context
 Each SDD phase has explicit read/write rules based on the dependency graph:
 
 | Phase | Reads artifacts from backend | Writes artifact |
-|-------|------------------------------|-----------------|
+| ------- | ------------------------------ | ----------------- |
 | `sdd-explore` | Nothing | Yes (`explore`) |
 | `sdd-propose` | Exploration (if exists, optional) | Yes (`proposal`) |
 | `sdd-spec` | Proposal (required) | Yes (`spec`) |
@@ -154,7 +166,7 @@ For SDD phases with required dependencies, the sub-agent reads them directly fro
 When launching sub-agents for SDD phases with engram mode, pass these exact topic_keys as artifact references:
 
 | Artifact | Topic Key |
-|----------|-----------|
+| ---------- | ----------- |
 | Project context | `sdd-init/{project}` |
 | Exploration | `sdd/{change-name}/explore` |
 | Proposal | `sdd/{change-name}/proposal` |
@@ -167,6 +179,7 @@ When launching sub-agents for SDD phases with engram mode, pass these exact topi
 | DAG state | `sdd/{change-name}/state` |
 
 Sub-agents retrieve full content via two steps:
+
 1. `mem_search(query: "{topic_key}", project: "{project}")` → get observation ID
 2. `mem_get_observation(id: {id})` → full content (REQUIRED — search results are truncated)
 
@@ -177,7 +190,7 @@ Convention files under `~/.codex/skills/_shared/` (global) or `.agent/skills/_sh
 ### Recovery Rule
 
 | Mode | Recovery |
-|------|----------|
+| ------ | ---------- |
 | `engram` | `mem_search(...)` → `mem_get_observation(...)` |
 | `openspec` | read `openspec/changes/*/state.yaml` |
 | `none` | State not persisted — explain to user |
