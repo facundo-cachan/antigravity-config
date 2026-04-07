@@ -88,6 +88,8 @@ echo "🏗️ Sincronizando Agents..."
 sync_agents "$HOME/.codex/agents.md"
 sync_agents "$HOME/.gemini/GEMINI.md"
 sync_agents "$HOME/.claude/CLAUDE.md"
+sync_agents "$HOME/.config/opencode/ORCHESTRATOR.md"
+
 
 echo "🏗️ Sincronizando MCP Servers..."
 update_gemini_mcp

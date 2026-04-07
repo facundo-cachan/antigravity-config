@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@slack/bolt": "^4.7.0",
+    "@slack/socket-mode": "^2.0.6"
+  }
+}

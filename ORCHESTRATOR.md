@@ -195,6 +195,63 @@ Convention files under `~/.codex/skills/_shared/` (global) or `.agent/skills/_sh
 | `openspec` | read `openspec/changes/*/state.yaml` |
 | `none` | State not persisted — explain to user |
 
+## 🤖 GESTIÓN DE SUB-AGENTS
+
+### Sub-Agents Disponibles (agent.yaml)
+
+| Name | Role | Model | Tools |
+|------|------|-------|-------|
+| Designer | UI/UX y percepción visual | gemini-3-pro-high | browser |
+| Coder | Full-Stack + Testing | gemini-3-flash | code_editor, terminal |
+| Reporter | Documentación y Verificación | gemini-3-pro-low | code_editor, pdf |
+
+### Consultar Estado por Nombre
+
+Cuando el usuario pregunte por el estado de un sub-agent específico (ej: "cómo va Designer?", "estado del Coder"):
+
+1. Llamar `delegation_list()` para obtener todas las delegaciones activas
+2. Filtrar por nombre de agent buscando `[AGENT:Name]` en el prompt de cada delegación
+3. Para cada match, llamar `delegation_read(id)` para obtener el resultado completo
+4. Resumir al usuario: estado (running/completed/failed), tarea asignada, y resultado si está disponible
+
+**Convención de naming**: Siempre incluir el prefijo `[AGENT:Name]` en el prompt al delegar:
+
+```
+[AGENT:Designer] Validá que el frontend cumpla con la guía de estilo...
+[AGENT:Coder] Implementá la autenticación con JWT...
+[AGENT:Reporter] Generá el reporte ejecutivo del sprint...
+```
+
+### Cancelar Delegación
+
+**Limitación crítica**: OpenCode v1.3.15 NO tiene cancelación nativa de delegaciones. El PR [#13924](https://github.com/anomalyco/opencode/pull/13924) está abierto sin merge.
+
+**Workaround con kill-flag**:
+
+1. Identificar la delegación running del agent: `delegation_list()` → filtrar por `[AGENT:Name]`
+2. Crear archivo de señal: `touch /tmp/opencode-kill-{delegation_id}`
+3. Confirmar cancelación al usuario
+4. Verificar que terminó: `delegation_read(id)`
+5. Limpiar: `rm /tmp/opencode-kill-{delegation_id}`
+
+**Requisito**: Los sub-agents deben verificar el kill-flag antes de acciones costosas. Incluir en el prompt de delegación:
+
+```
+IMPORTANTE: Antes de cada acción que tome más de 5 segundos, verificá si existe
+el archivo /tmp/opencode-kill-{delegation_id}. Si existe, terminá inmediatamente
+con el mensaje "CANCELLED: Delegación cancelada por el orquestador".
+```
+
+### Estado de Delegaciones
+
+| Estado | Significado |
+|--------|-------------|
+| `running` | Delegación activa en ejecución |
+| `completed` | Terminó exitosamente — usar `delegation_read(id)` para resultado |
+| `failed` | Terminó con error — usar `delegation_read(id)` para ver el error |
+
+---
+
 ## ⚠️ RESTRICCIONES CRÍTICAS (NUNCA)
 
 - ❌ No rompas patrones establecidos sin justificación técnica.
